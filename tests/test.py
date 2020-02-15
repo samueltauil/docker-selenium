@@ -27,29 +27,21 @@ IMAGE_NAME_MAP = {
 
     # Chrome Images
     'NodeChrome': 'node-chrome',
-    'NodeChromeDebug': 'node-chrome-debug',
     'StandaloneChrome': 'standalone-chrome',
-    'StandaloneChromeDebug': 'standalone-chrome-debug',
 
     # Firefox Images
     'NodeFirefox': 'node-firefox',
-    'NodeFirefoxDebug': 'node-firefox-debug',
     'StandaloneFirefox': 'standalone-firefox',
-    'StandaloneFirefoxDebug': 'standalone-firefox-debug',
 }
 
 TEST_NAME_MAP = {
     # Chrome Images
     'NodeChrome': 'ChromeTests',
-    'NodeChromeDebug': 'ChromeTests',
     'StandaloneChrome': 'ChromeTests',
-    'StandaloneChromeDebug': 'ChromeTests',
 
     # Firefox Images
     'NodeFirefox': 'FirefoxTests',
-    'NodeFirefoxDebug': 'FirefoxTests',
     'StandaloneFirefox': 'FirefoxTests',
-    'StandaloneFirefoxDebug': 'FirefoxTests',
 }
 
 
