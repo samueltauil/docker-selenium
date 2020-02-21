@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/base:3.141.59-zirconium
+FROM samueltauil/base:3.141.59-zirconium
 LABEL authors=SeleniumHQ
 
 USER seluser
@@ -33,7 +33,7 @@ ENV GRID_DEBUG false
 ENV GRID_HUB_PORT 4444
 # As string, maps to "host"
 ENV GRID_HUB_HOST "0.0.0.0"
- 
+
 COPY generate_config \
     start-selenium-hub.sh \
     /opt/bin/
