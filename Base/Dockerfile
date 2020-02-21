@@ -83,7 +83,10 @@ RUN echo "DefaultTasksMax=infinity" >> /etc/systemd/system.conf \
   && echo "* soft     nofile         unlimited" >> /etc/security/limits.conf \
   && echo "* hard     nofile         unlimited" >> /etc/security/limits.conf \
   && echo "root soft     nofile         unlimited" >> /etc/security/limits.conf \
-  && echo "root hard     nofile         unlimited" >> /etc/security/limits.conf
+  && echo "root hard     nofile         unlimited" >> /etc/security/limits.conf \
+  && echo "root soft     nproc         unlimited" >> /etc/security/limits.conf \
+  && echo "root hard     nproc         unlimited" >> /etc/security/limits.conf \
+  && echo "session required pam_limits.so" >> /etc/pam.d/common-session 
 
 #===================================================
 # Run the following commands as non-privileged user
