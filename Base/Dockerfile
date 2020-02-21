@@ -72,6 +72,19 @@ RUN  mkdir -p /opt/selenium /var/run/supervisor /var/log/supervisor \
   && chgrp -R 0 /opt/selenium ${HOME} /var/run/supervisor /var/log/supervisor \
   && chmod -R g=u /opt/selenium ${HOME} /var/run/supervisor /var/log/supervisor
 
+#===========
+# Removing limits
+#===========
+RUN echo "DefaultTasksMax=infinity" >> /etc/systemd/system.conf \
+  && echo "DefaultLimitNOFILE=10000000" >> /etc/systemd/system.conf \
+  && echo "UserTasksMax=infinity" >> /etc/systemd/logind.conf \
+  && echo "* soft     nproc          unlimited" >> /etc/security/limits.conf \
+  && echo "* hard     nproc          unlimited" >> /etc/security/limits.conf \
+  && echo "* soft     nofile         unlimited" >> /etc/security/limits.conf \
+  && echo "* hard     nofile         unlimited" >> /etc/security/limits.conf \
+  && echo "root soft     nofile         unlimited" >> /etc/security/limits.conf \
+  && echo "root hard     nofile         unlimited" >> /etc/security/limits.conf
+
 #===================================================
 # Run the following commands as non-privileged user
 #===================================================
