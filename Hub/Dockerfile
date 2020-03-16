@@ -7,10 +7,21 @@ LABEL authors=SeleniumHQ
 
 USER seluser
 
+ENV GROK_ARCH="grok_exporter-1.0.0.RC3.linux-amd64"
+ENV GROK_VERSION="v1.0.0.RC3"
+
+#===========
+# Adding grok_exporter
+#===========
+RUN sudo wget https://github.com/fstab/grok_exporter/releases/download/$GROK_VERSION/$GROK_ARCH.zip \
+   && sudo unzip $GROK_ARCH.zip \
+   && sudo mv $GROK_ARCH /opt/selenium \
+   && sudo rm $GROK_ARCH.zip
+
 #========================
 # Selenium Configuration
 #========================
-
+EXPOSE 9144
 EXPOSE 4444
 
 # As integer, maps to "maxSession"
@@ -36,8 +47,10 @@ ENV GRID_HUB_HOST "0.0.0.0"
 
 COPY generate_config \
     start-selenium-hub.sh \
+    start-grok.sh \
     /opt/bin/
 
+COPY config.yml /opt/selenium/
 COPY selenium-hub.conf /etc/supervisor/conf.d/
-
+COPY grok-exporter.conf /etc/supervisor/conf.d/
 RUN /opt/bin/generate_config > /opt/selenium/config.json

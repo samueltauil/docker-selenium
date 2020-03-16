@@ -72,6 +72,7 @@ RUN  mkdir -p /opt/selenium /var/run/supervisor /var/log/supervisor \
   && chgrp -R 0 /opt/selenium ${HOME} /var/run/supervisor /var/log/supervisor \
   && chmod -R g=u /opt/selenium ${HOME} /var/run/supervisor /var/log/supervisor
 
+
 #===========
 # Removing limits
 #===========
@@ -82,11 +83,15 @@ RUN echo "DefaultTasksMax=infinity" >> /etc/systemd/system.conf \
   && echo "* hard     nproc          unlimited" >> /etc/security/limits.conf \
   && echo "* soft     nofile         unlimited" >> /etc/security/limits.conf \
   && echo "* hard     nofile         unlimited" >> /etc/security/limits.conf \
+  && echo "seluser soft     nproc          unlimited" >> /etc/security/limits.conf \
+  && echo "seluser hard     nproc          unlimited" >> /etc/security/limits.conf \
+  && echo "seluser soft     nofile         unlimited" >> /etc/security/limits.conf \
+  && echo "seluser hard     nofile         unlimited" >> /etc/security/limits.conf \
   && echo "root soft     nofile         unlimited" >> /etc/security/limits.conf \
   && echo "root hard     nofile         unlimited" >> /etc/security/limits.conf \
   && echo "root soft     nproc         unlimited" >> /etc/security/limits.conf \
   && echo "root hard     nproc         unlimited" >> /etc/security/limits.conf \
-  && echo "session required pam_limits.so" >> /etc/pam.d/common-session 
+  && echo "session required pam_limits.so" >> /etc/pam.d/common-session
 
 #===================================================
 # Run the following commands as non-privileged user

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adapter-config
+  namespace: selenium
+data:
+  config.yaml: >
+    rules:
+
+    - seriesQuery:
+    'selenium_nodes_registered{service!="",namespace!="",pod!=""}'
+      resources:
+        overrides:
+          service: {resource: "service"}
+          namespace: {resource: "namespace"}
+          pod: {resource: "pod"}
+      name:
+        matches: "^(.*)_registered"
+        as: "${1}_created"
+      metricsQuery: 'selenium_nodes_registered'

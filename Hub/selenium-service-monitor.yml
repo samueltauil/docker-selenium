@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: selenium-monitor
+  name: selenium-monitor
+  namespace: selenium
+spec:
+  endpoints:
+  - interval: 3s
+    port: metrics
+    scheme: http
+  selector:
+    matchLabels:
+      app: selenium-hub

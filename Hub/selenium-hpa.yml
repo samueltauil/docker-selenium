@@ -1,0 +1,20 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: selenium-autoscaler
+  namespace: selenium
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: selenium-hub
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+  - type: Object
+    object:
+      target:
+        kind: Service
+        name: selenium-hub
+      metricName: selenium_nodes_created
+      targetValue: 5

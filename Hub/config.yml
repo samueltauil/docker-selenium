@@ -1,0 +1,15 @@
+global:
+    config_version: 3
+input:
+    type: file
+    path: /opt/selenium/selenium-hub.log
+    readall: true
+grok:
+    patterns_dir: ./patterns
+metrics:
+    - type: counter
+      name: selenium_nodes_registered
+      help: Number of nodes registered to a Selenium Hub
+      match: 'Registered'
+server:
+    port: 9144
