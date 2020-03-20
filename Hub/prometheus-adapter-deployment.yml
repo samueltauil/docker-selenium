@@ -20,7 +20,7 @@ spec:
       containers:
       - name: prometheus-adapter
         image: >-
-          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:a4078db61740cbd84688638b6a3d9dd126e1035a381b0410441166f81c165cfc
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:33e80b1706acb1cba44e47e4d00642c356eed3d735375c2b57616cc48b5a7ec5
         args:
         - --secure-port=6443
         - --tls-cert-file=/var/run/serving-cert/tls.crt
